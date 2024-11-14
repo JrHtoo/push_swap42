@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:27:50 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/08/31 15:07:15 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:19:54 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,4 @@ char	*ft_strrchr(const char *s, int c)
 	if (c == 0)
 		return ((char *)s);
 	return (ptr);
-}
-
-#include <string.h>
-#include <stdio.h>
-int main(void)
-{
-	char src[20] = "pepe y cparlos World";
-	char c = 'y';
-
-	printf("%s\n", strrchr(src, c));
-	printf("%s\n", ft_strrchr(src, c));
 }

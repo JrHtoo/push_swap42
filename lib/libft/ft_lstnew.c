@@ -6,13 +6,13 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:36:59 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/08/28 12:45:55 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:23:47 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 

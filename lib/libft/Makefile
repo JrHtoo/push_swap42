@@ -58,6 +58,7 @@ ARFLAGS = -rcs
 all: $(OBJS_DIR) $(NAME)
 
 $(OBJS_DIR): $(INCLUDE) Makefile
+	@printf "\033[0;32mMaking libft.....\n\e[0m"
 	@$(CC) $(CFLAGS) -c $(SRCS)
 	@mkdir -p $@
 	@mv *.o $@

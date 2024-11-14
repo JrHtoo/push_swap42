@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 11:40:26 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/08/30 11:36:03 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:18:49 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,3 @@ char	**ft_split(char const *s, char c)
 	lst[i] = 0;
 	return (lst);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char str[500] = "  tripouille  42   ";
-// 	char c = ' ';
-// 	int		i;
-// 	char	**arr;
-// 	int j;
-
-// 	j = 0;
-// 	i = ft_wordcount(str, c);
-// 	printf("%d\n", i);
-// 	arr = ft_split(str, c);
-// 	while (j <= i)
-// 	{
-// 		printf("%s\n", arr[j]);
-// 		free(arr[j]);
-// 		j++;
-// 	}
-// 	free(arr);
-// }

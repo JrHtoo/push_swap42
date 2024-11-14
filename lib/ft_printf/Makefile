@@ -27,6 +27,7 @@ $(OBJS_DIR): $(INCLUDE) Makefile
 	@mv *.o $@
 
 $(NAME): $(SRCS)
+	@printf "\033[0;32mMaking libftprintf.....\n\e[0m"
 	@$(ARCHIVE) $(ARFLAGS) $(NAME) $(SRCS_OBJS)
 	@printf "\033[0;32mLibftprintf library complete!\n\e[0m"
 

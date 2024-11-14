@@ -1,5 +1,7 @@
 SRC_PATH = src/
-SRCS = main.c
+SRCS = main.c \
+		parsing.c
+
 SRCS_PREFIXED = $(addprefix $(SRC_PATH), $(SRCS))
 
 INCLUDE = include/push_swap.h
@@ -12,38 +14,39 @@ CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 LIBFT_PATH = lib/libft/
 
-LIBFT_LIB = $(LIBFT_PATH)libft.address
+LIBFT_LIB = $(LIBFT_PATH)libft.a
 
 PRINTF_PATH = lib/ft_printf/
 
-PRINTF_LIB = $(PRINTF_LIB)libftprintf.a
+PRINTF_LIB = $(PRINTF_PATH)libftprintf.a
 
-OBJS = $(SRCS_PREFIXED:.c=.o)
+OBJS_DIR = obj/
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-all: 	SUBSYSTEMS $(OBJS_DIR) $(NAME)
+all: SUBSYSTEMS $(OBJS) $(NAME)
 
 SUBSYSTEMS: 
-	@printf "\033[0;32mMaking libft.....\n\e[0m"
-	@make -C $(LIBFT_PATH) all
-	@printf "\033[0;32mMaking libftprintf.....\n\e[0m"
-	@make -C $(PRINTF_PATH) all
+	@make -C $(LIBFT_PATH) all -s
+	@make -C $(PRINTF_PATH) all -s
 
-$(OBJS_DIR): $(INCLUDE) Makefile
-	@$(CC) $(CFLAGS) -c $(SRCS_PREFIXED)
+$(OBJS_DIR)%.o: $(SRC_PATH)%.c Makefile $(INCLUDE)
+	@mkdir -p $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "\033[0;32mCompiling: $<\e[0m\n"
 
-$(NAME):
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBFT_LIB) $(PRINTF_LIB)
-	@printf "\033[0;32mPUSH_SWAP Complied\n\e[0m"
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(PRINTF_LIB) -o $(NAME)
+	@printf "\033[0;32m$(NAME) compiled\n\e[0m"
 
 clean:
-	@make -C $(LIBFT_PATH) clean
-	@make -C $(PRINTF_PATH) clean
+	@make -C $(LIBFT_PATH) clean -s
+	@make -C $(PRINTF_PATH) clean -s
 	@rm -rf $(OBJS_DIR)
-	@printf "\033[0;31mCleaning process done!\e[0m"
+	@printf "\033[0;31mCleaning process done!\n\e[0m"
 
 fclean:
-	@make -C $(LIBFT_PATH) fclean
-	@make -C $(PRINTF_PATH) fclean
+	@make -C $(LIBFT_PATH) fclean -s
+	@make -C $(PRINTF_PATH) fclean -s
 	@rm -rf $(OBJS_DIR)
 	@rm -rf $(NAME)
 	@printf "\033[0;31mFile cleaning process done!\n\e[0m"
