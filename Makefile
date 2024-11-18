@@ -1,6 +1,12 @@
 SRC_PATH = src/
 SRCS = main.c \
-		parsing.c
+		parsing.c \
+		free.c  \
+		push.c  \
+		swap.c  \
+		rotate.c \
+		reverse_rotate.c \
+		utils.c
 
 SRCS_PREFIXED = $(addprefix $(SRC_PATH), $(SRCS))
 

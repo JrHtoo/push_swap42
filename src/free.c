@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 15:50:38 by juhtoo-h         ###   ########.fr       */
+/*   Created: 2024/11/18 13:13:29 by juhtoo-h          #+#    #+#             */
+/*   Updated: 2024/11/18 13:17:12 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_free_splits(char **split)
 {
-	t_list	**stack_a;
-	// t_list	*stack_b;
+	int	i;
 
-	if (argc == 1)
-		return (0);
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-	ft_parsing(stack_a, argc, argv);
-	check_sorted(stack_a);
-	t_list	*temp;
-	temp = *stack_a;
-	while (temp)
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
+void	ft_free_stack(t_list **list)
+{
+	t_list	*tmp;
+	t_list	*current;
+
+	current = *list;
+	while (current)
 	{
-		printf("%d\n", temp->content);
-		temp = temp->next;
+		tmp = current;
+		current = current->next;
+		free(tmp);
 	}
-	ft_free_stack(stack_a);
-	return (0);
+	free(list);
+}
+
+void	ft_error_message(t_list **list, char *str)
+{
+	ft_printf("%s\n", str);
+	ft_free_stack(list);
+	exit(EXIT_FAILURE);
 }

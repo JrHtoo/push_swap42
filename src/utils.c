@@ -1,35 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 15:50:38 by juhtoo-h         ###   ########.fr       */
+/*   Created: 2024/11/18 15:50:53 by juhtoo-h          #+#    #+#             */
+/*   Updated: 2024/11/18 15:56:30 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int argc, char **argv)
+void	check_sorted(t_list **stack)
 {
-	t_list	**stack_a;
-	// t_list	*stack_b;
-
-	if (argc == 1)
-		return (0);
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-	ft_parsing(stack_a, argc, argv);
-	check_sorted(stack_a);
 	t_list	*temp;
-	temp = *stack_a;
-	while (temp)
+
+	temp = *stack;
+	while (temp->next)
 	{
-		printf("%d\n", temp->content);
+		if (temp->content > temp->next->content)
+			return ;
 		temp = temp->next;
 	}
-	ft_free_stack(stack_a);
-	return (0);
+	exit(EXIT_SUCCESS);
+}
+
+int	ft_isnumber(char *numb)
+{
+	int	i;
+
+	i = 0;
+	while (numb[i])
+	{
+		if (ft_isdigit(numb[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_duplicate(t_list **list, int numb)
+{
+	t_list	*temp;
+
+	temp = *list;
+	while (temp)
+	{
+		if (temp->content == numb)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }
