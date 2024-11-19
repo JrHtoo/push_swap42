@@ -6,13 +6,13 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:56:45 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 16:42:34 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:51:50 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	swap(t_list **list)
+static void	swap(t_list **list)
 {
 	t_list	*head;
 	t_list	*next;

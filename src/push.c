@@ -6,24 +6,36 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:36:43 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 16:41:45 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:52:07 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_list **stack_from, t_list **stack_to)
+static void	push(t_list **stack_from, t_list **stack_to)
 {
 	t_list	*head_from;
+	t_list	*head_to;
 	t_list	*tmp;
 
 	if (ft_lstsize(*stack_from) == 0)
 		return ;
 	head_from = *stack_from;
+	head_to = *stack_to;
 	tmp = head_from;
 	head_from = head_from->next;
-	tmp->next = NULL;
-	ft_lstadd_front(stack_to, tmp);
+	*stack_from = head_from;
+	if (!head_to)
+	{
+		head_to = tmp;
+		head_to->next = NULL;
+		*stack_to = head_to;
+	}
+	else
+	{
+		tmp->next = head_to;
+		*stack_to = tmp;
+	}
 }
 
 void	push_a(t_list **stack_a, t_list **stack_b)

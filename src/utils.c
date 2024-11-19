@@ -6,50 +6,57 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:50:53 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 15:56:30 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:57:59 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	check_sorted(t_list **stack)
+int	get_distance(t_list **stack, int index)
 {
+	t_list	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack;
+	while (head)
+	{
+		if (index == head->content)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
+}
+
+int	find_min(t_list **stack)
+{
+	int		min;
 	t_list	*temp;
 
 	temp = *stack;
-	while (temp->next)
-	{
-		if (temp->content > temp->next->content)
-			return ;
-		temp = temp->next;
-	}
-	exit(EXIT_SUCCESS);
-}
-
-int	ft_isnumber(char *numb)
-{
-	int	i;
-
-	i = 0;
-	while (numb[i])
-	{
-		if (ft_isdigit(numb[i]) == 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	is_duplicate(t_list **list, int numb)
-{
-	t_list	*temp;
-
-	temp = *list;
+	min = temp->content;
 	while (temp)
 	{
-		if (temp->content == numb)
-			return (0);
+		if (min > temp->content)
+			min = temp->content;
 		temp = temp->next;
 	}
-	return (1);
+	return (min);
+}
+
+int	find_max(t_list **stack)
+{
+	int		max;
+	t_list	*temp;
+
+	temp = *stack;
+	max = temp->content;
+	while (temp)
+	{
+		if (max < temp->content)
+			max = temp->content;
+		temp = temp->next;
+	}
+	return (max);
 }

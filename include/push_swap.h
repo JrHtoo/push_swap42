@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/18 16:41:59 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:17:30 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # include "../lib/ft_printf/ft_printf.h"
 
 void	ft_parsing(t_list **list, int argc, char **argv);
-
 void	ft_free_stack(t_list **list);
 void	ft_free_splits(char **split);
 void	ft_error_message(t_list **list, char *str);
 void	check_sorted(t_list **stack);
 int		is_duplicate(t_list **list, int numb);
 int		ft_isnumber(char *numb);
+int		find_max(t_list **stack);
+int		find_min(t_list **stack);
 
 // swap instruction
 void	swap_s(t_list **stack_a, t_list **stack_b);
@@ -36,5 +37,15 @@ void	swap_a(t_list **list);
 // push instruction
 void	push_b(t_list **stack_a, t_list **stack_b);
 void	push_a(t_list **stack_a, t_list **stack_b);
+
+// rotate instruction
+void	rotate_a(t_list **stack_a);
+void	rotate_b(t_list **stack_b);
+void	rotate_r(t_list **stack_a, t_list **stack_b);
+
+// reverse rotate instruction
+void	reverse_rotate_a(t_list **stack_a);
+void	reverse_rotate_b(t_list **stack_b);
+void	reverse_rotate_r(t_list **stack_a, t_list **stack_b);
 
 #endif

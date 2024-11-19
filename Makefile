@@ -6,7 +6,8 @@ SRCS = main.c \
 		swap.c  \
 		rotate.c \
 		reverse_rotate.c \
-		utils.c
+		utils.c \
+		mini_swap.c
 
 SRCS_PREFIXED = $(addprefix $(SRC_PATH), $(SRCS))
 
