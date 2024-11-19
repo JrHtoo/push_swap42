@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 14:17:30 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:46:19 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		is_duplicate(t_list **list, int numb);
 int		ft_isnumber(char *numb);
 int		find_max(t_list **stack);
 int		find_min(t_list **stack);
+int		get_distance(t_list **stack, int index);
+void	simple_sort(t_list **stack_a, t_list **stack_b);
 
 // swap instruction
 void	swap_s(t_list **stack_a, t_list **stack_b);
