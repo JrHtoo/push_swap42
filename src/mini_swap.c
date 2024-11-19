@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:21:40 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 16:46:08 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:34:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ static void	sort_3(t_list **stack_a, t_list **stack_b)
 	int	distance;
 
 	distance = get_distance(stack_a, find_min(stack_a));
-	if (distance == 0)
-		push_b(stack_a, stack_b);
-	else if (distance == 1)
+	if (distance == 1)
 		swap_a(stack_a);
 	else if (distance == 2)
 		reverse_rotate_a(stack_a);
+	push_b(stack_a, stack_b);
 	sort_2(stack_a);
 	push_a(stack_a, stack_b);
 }
@@ -38,9 +37,7 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	int	distance;
 
 	distance = get_distance(stack_a, find_min(stack_a));
-	if (distance == 0)
-		push_b(stack_a, stack_b);
-	else if (distance == 1)
+	if (distance == 1)
 		swap_a(stack_a);
 	else if (distance == 2)
 	{
@@ -49,6 +46,7 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	}
 	else if (distance == 3)
 		reverse_rotate_a(stack_a);
+	push_b(stack_a, stack_b);
 	sort_3(stack_a, stack_b);
 	push_a(stack_a, stack_b);
 }
@@ -58,9 +56,7 @@ static void	sort_5(t_list **stack_a, t_list **stack_b)
 	int	distance;
 
 	distance = get_distance(stack_a, find_min(stack_a));
-	if (distance == 0)
-		push_b(stack_a, stack_b);
-	else if (distance == 1)
+	if (distance == 1)
 		swap_a(stack_a);
 	else if (distance == 2)
 	{
@@ -74,6 +70,7 @@ static void	sort_5(t_list **stack_a, t_list **stack_b)
 	}
 	else if (distance == 4)
 		reverse_rotate_a(stack_a);
+	push_b(stack_a, stack_b);
 	sort_4(stack_a, stack_b);
 	push_a(stack_a, stack_b);
 }
