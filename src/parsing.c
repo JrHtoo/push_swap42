@@ -6,13 +6,13 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:54:24 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 14:54:31 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:13:28 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	check_sorted(t_list **stack)
+int	check_sorted(t_list **stack)
 {
 	t_list	*temp;
 
@@ -20,10 +20,10 @@ void	check_sorted(t_list **stack)
 	while (temp->next)
 	{
 		if (temp->content > temp->next->content)
-			return ;
+			return (0);
 		temp = temp->next;
 	}
-	exit(EXIT_SUCCESS);
+	return (1);
 }
 
 int	ft_isnumber(char *numb)

@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 16:46:19 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:13:58 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_parsing(t_list **list, int argc, char **argv);
 void	ft_free_stack(t_list **list);
 void	ft_free_splits(char **split);
 void	ft_error_message(t_list **list, char *str);
-void	check_sorted(t_list **stack);
+int		check_sorted(t_list **stack);
 int		is_duplicate(t_list **list, int numb);
 int		ft_isnumber(char *numb);
 int		find_max(t_list **stack);

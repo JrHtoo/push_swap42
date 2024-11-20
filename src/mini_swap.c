@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:21:40 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 19:34:40 by user             ###   ########.fr       */
+/*   Updated: 2024/11/20 13:43:12 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,23 @@ static void	sort_2(t_list **stack)
 		swap_a(stack);
 }
 
-static void	sort_3(t_list **stack_a, t_list **stack_b)
+static void	sort_3(t_list **stack_a)
 {
-	int	distance;
-
-	distance = get_distance(stack_a, find_min(stack_a));
-	if (distance == 1)
-		swap_a(stack_a);
-	else if (distance == 2)
+	if (find_min(stack_a) == (*stack_a)->content)
+	{
 		reverse_rotate_a(stack_a);
-	push_b(stack_a, stack_b);
-	sort_2(stack_a);
-	push_a(stack_a, stack_b);
+		swap_a(stack_a);
+	}
+	else if (find_max(stack_a) == (*stack_a)->content)
+	{
+		rotate_a(stack_a);
+		if (!check_sorted(stack_a))
+			swap_a(stack_a);
+	}
+	else if (ft_lstlast(*stack_a)->content == find_min(stack_a))
+		reverse_rotate_a(stack_a);
+	else
+		swap_a(stack_a);
 }
 
 static void	sort_4(t_list **stack_a, t_list **stack_b)
@@ -47,7 +52,7 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	else if (distance == 3)
 		reverse_rotate_a(stack_a);
 	push_b(stack_a, stack_b);
-	sort_3(stack_a, stack_b);
+	sort_3(stack_a);
 	push_a(stack_a, stack_b);
 }
 
@@ -83,7 +88,7 @@ void	simple_sort(t_list **stack_a, t_list **stack_b)
 	if (size == 2)
 		sort_2(stack_a);
 	else if (size == 3)
-		sort_3(stack_a, stack_b);
+		sort_3(stack_a);
 	else if (size == 4)
 		sort_4(stack_a, stack_b);
 	else if (size == 5)

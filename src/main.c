@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 19:41:14 by user             ###   ########.fr       */
+/*   Updated: 2024/11/20 13:40:16 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
-	// t_list	*temp;
+	t_list	*temp;
 
 	if (argc == 1)
 		return (0);
@@ -25,15 +25,16 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	ft_parsing(stack_a, argc, argv);
-	check_sorted(stack_a);
+	if (check_sorted(stack_a))
+		exit(EXIT_SUCCESS);
 	if (argc <= 6)
 		simple_sort(stack_a, stack_b);
-	// temp = *stack_a;
-	// while (temp)
-	// {
-	// 	ft_printf("%d\n", temp->content);
-	// 	temp = temp->next;
-	// }
+	temp = *stack_a;
+	while (temp)
+	{
+		ft_printf("%d\n", temp->content);
+		temp = temp->next;
+	}
 	ft_free_stack(stack_a);
 	ft_free_stack(stack_b);
 	return (0);
