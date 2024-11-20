@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:36:59 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/14 15:23:47 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:15:28 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 	if (!new)
 		return (NULL);
 	new -> content = content;
+	new -> index = -1;
 	new -> next = NULL;
 	return (new);
 }

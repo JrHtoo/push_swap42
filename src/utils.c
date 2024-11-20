@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:50:53 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 14:57:59 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:53:35 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,44 @@ int	find_max(t_list **stack)
 		temp = temp->next;
 	}
 	return (max);
+}
+
+
+static t_list	*get_next_min(t_list **stack)
+{
+	int		has_min;
+	t_list	*head;
+	t_list	*min;
+
+	has_min = 0;
+	head = *stack;
+	min = NULL;
+	if (head)
+	{
+		while (head)
+		{
+			if ((head->index == -1) && (!has_min || head->content < min->content))
+			{
+				min = head;
+				has_min = 1;
+				ft_printf("1");
+			}
+			head = head->next;
+		}
+	}
+	return (min);
+}
+
+void	index_init(t_list **stack)
+{
+	t_list	*head;
+	int		index;
+
+	index = 0;
+	head = get_next_min(stack);
+	while (head)
+	{
+		head->content = index++;
+		head = get_next_min(stack);
+	}
 }

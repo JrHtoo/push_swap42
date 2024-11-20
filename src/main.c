@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/20 13:40:16 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:45:19 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	temp = *stack_a;
 	while (temp)
 	{
-		ft_printf("%d\n", temp->content);
+		ft_printf("%d     %d\n", temp->content, temp->index);
 		temp = temp->next;
 	}
 	ft_free_stack(stack_a);

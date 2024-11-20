@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:54:24 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/20 13:13:28 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:54:49 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int	ft_isnumber(char *numb)
 	int	i;
 
 	i = 0;
+	if (numb[i] == '-' || numb[i] == '+')
+		i++;
 	while (numb[i])
 	{
-		if (ft_isdigit(numb[i]) == 0 && numb[i] != '-')
+		if (ft_isdigit(numb[i]) == 0)
 			return (0);
 		i++;
 	}
@@ -76,4 +78,5 @@ void	ft_parsing(t_list **list, int argc, char **argv)
 		ft_free_splits(splits);
 		i++;
 	}
+	index_init(list);
 }

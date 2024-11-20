@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/20 13:13:58 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:44:33 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		find_max(t_list **stack);
 int		find_min(t_list **stack);
 int		get_distance(t_list **stack, int index);
 void	simple_sort(t_list **stack_a, t_list **stack_b);
+void	index_init(t_list **stack);
 
 // swap instruction
 void	swap_s(t_list **stack_a, t_list **stack_b);
