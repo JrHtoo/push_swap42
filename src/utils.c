@@ -6,13 +6,13 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:50:53 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/20 16:53:35 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:54:45 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	get_distance(t_list **stack, int index)
+int	get_distance(t_list **stack, int number)
 {
 	t_list	*head;
 	int		distance;
@@ -21,7 +21,7 @@ int	get_distance(t_list **stack, int index)
 	head = *stack;
 	while (head)
 	{
-		if (index == head->content)
+		if (number == head->content)
 			break ;
 		distance++;
 		head = head->next;
@@ -75,11 +75,11 @@ static t_list	*get_next_min(t_list **stack)
 	{
 		while (head)
 		{
-			if ((head->index == -1) && (!has_min || head->content < min->content))
+			if ((head->index == -1) && (!has_min
+					|| head->content < min->content))
 			{
 				min = head;
 				has_min = 1;
-				ft_printf("1");
 			}
 			head = head->next;
 		}
@@ -96,7 +96,7 @@ void	index_init(t_list **stack)
 	head = get_next_min(stack);
 	while (head)
 	{
-		head->content = index++;
+		head->index = index++;
 		head = get_next_min(stack);
 	}
 }
