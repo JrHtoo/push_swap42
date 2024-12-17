@@ -6,27 +6,22 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:56:45 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 13:51:50 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:31:23 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	swap(t_list **list)
+static void	swap(t_list **stack)
 {
-	t_list	*head;
-	t_list	*next;
-	int		temp;
+	t_list	*tmp;
 
-	if (ft_lstsize(*list) < 2)
+	if (!(*stack) || !((*stack)->next))
 		return ;
-	head = *list;
-	next = (*list)->next;
-	if (!head || !next)
-		ft_error_message(list, "Error occured while swapping!");
-	temp = head->content;
-	head->content = next->content;
-	next->content = temp;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tmp->next = (*stack)->next;
+	(*stack)->next = tmp;
 }
 
 void	swap_a(t_list **list)

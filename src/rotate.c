@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:35:57 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 13:51:55 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:30:58 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 static void	rotate(t_list **stack)
 {
 	t_list	*head;
-	t_list	*tail;
 
-	if (ft_lstsize(*stack) < 2)
-		return ;
 	head = *stack;
-	tail = ft_lstlast(head);
+	if (!(*stack) || !((*stack)->next))
+		return ;
 	*stack = head->next;
 	head->next = NULL;
-	tail->next = head;
+	ft_lstlast(*stack)->next = head;
 }
 
 void	rotate_a(t_list **stack_a)

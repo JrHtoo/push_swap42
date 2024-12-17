@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/21 12:15:30 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:32:22 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 		exit(EXIT_SUCCESS);
 	if (argc <= 6)
 		simple_sort(stack_a, stack_b);
-	else
-		sort(stack_a, stack_b);
+	// else
+	// 	sort(stack_a, stack_b);
 	temp = *stack_a;
 	while (temp)
 	{

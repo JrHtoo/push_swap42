@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:36:19 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 13:52:02 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:31:50 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 static void	reverse_rotate(t_list **stack)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_list	*tmp;
+	t_list	*end;
 
-	if (ft_lstsize(*stack) < 2)
+	if (!(*stack) || !((*stack)->next))
 		return ;
-	head = *stack;
-	tail = ft_lstlast(head);
-	while (head)
-	{
-		if (head->next->next == NULL)
-		{
-			head->next = NULL;
-			break ;
-		}
-		head = head->next;
-	}
-	tail->next = *stack;
-	*stack = tail;
+	tmp = *stack;
+	end = ft_lstlast(*stack);
+	while ((*stack)->next->next)
+		*stack = (*stack)->next;
+	end->next = tmp;
+	(*stack)->next = NULL;
+	*stack = end;
 }
 
 void	reverse_rotate_a(t_list **stack_a)

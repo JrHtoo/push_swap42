@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:36:43 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/19 13:52:07 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:48:44 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,14 @@
 
 static void	push(t_list **stack_from, t_list **stack_to)
 {
-	t_list	*head_from;
-	t_list	*head_to;
-	t_list	*tmp;
+	t_list	*push;
 
-	if (ft_lstsize(*stack_from) == 0)
+	if (!*stack_from)
 		return ;
-	head_from = *stack_from;
-	head_to = *stack_to;
-	tmp = head_from;
-	head_from = head_from->next;
-	*stack_from = head_from;
-	if (!head_to)
-	{
-		head_to = tmp;
-		head_to->next = NULL;
-		*stack_to = head_to;
-	}
-	else
-	{
-		tmp->next = head_to;
-		*stack_to = tmp;
-	}
+	push = (*stack_from)->next;
+	(*stack_from)->next = *stack_to;
+	*stack_to = *stack_from;
+	*stack_from = push;
 }
 
 void	push_a(t_list **stack_a, t_list **stack_b)

@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:21:40 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2024/11/20 13:43:12 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:53:28 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 		swap_a(stack_a);
 	else if (distance == 2)
 	{
-		reverse_rotate_a(stack_a);
-		reverse_rotate_a(stack_a);
+		rotate_a(stack_a);
+		rotate_a(stack_a);
 	}
 	else if (distance == 3)
 		reverse_rotate_a(stack_a);
 	push_b(stack_a, stack_b);
-	sort_3(stack_a);
+	if (!check_sorted(stack_a))
+		sort_3(stack_a);
 	push_a(stack_a, stack_b);
 }
 
