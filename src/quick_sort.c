@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:10:11 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/28 13:53:20 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:38:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	push_back_to_a(t_list **stack_a, t_list **stack_b, int size)
 static void	quick_sort(t_list **stack_a, t_list **stack_b,
 	t_data data, int size)
 {
-	if (size <= 3)
+	if (size <= 5)
 	{
 		tiny_sort(stack_a, stack_b, size);
 		return ;
@@ -45,6 +45,7 @@ void	main_sort(t_list **stack_a, t_list **stack_b)
 	data.size = ft_lstsize(*stack_a);
 	data.which = true;
 	data.size = ft_lstsize(*stack_a);
+	data.first_time = true;
 	quick_sort(stack_a, stack_b, data, data.size);
 	while ((*stack_b))
 		push_a(stack_a, stack_b);

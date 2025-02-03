@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:06:07 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/28 16:47:45 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:39:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ int	main(int argc, char **argv)
 		simple_sort(stack_a, stack_b);
 	else
 		main_sort(stack_a, stack_b);
-	ft_free_stack(stack_a);
-	ft_free_stack(stack_b);
-	return (0);
-}
-
-
 	// temp = *stack_a;
 	// ft_printf("number     index     current_pos\n");
 	// while (temp)
@@ -51,4 +45,9 @@ int	main(int argc, char **argv)
 	// {
 	// 	ft_printf("%d            %d            %d\n", temp->content, temp->index, temp->current_pos);
 	// 	temp = temp->next;
-	// }
+	// }	
+	ft_free_stack(stack_a);
+	ft_free_stack(stack_b);
+	return (0);
+}
+

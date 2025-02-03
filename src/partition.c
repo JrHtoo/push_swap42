@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   partition.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:40:59 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/28 16:54:17 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:05:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	select_pivot(t_list **stack_a, int size)
 static void	partition_a(t_list **stack_a, t_list **stack_b,
 	t_data *data, int size)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (i++ < size && (*stack_a))
@@ -98,8 +98,12 @@ static void	partition_a(t_list **stack_a, t_list **stack_b,
 		}
 	}
 	i = data->size;
-	while (i--)
-		reverse_rotate_a(stack_a);
+	if (!data->first_time)
+	{
+		while (i--)
+			reverse_rotate_a(stack_a);
+	}
+	data->first_time = false;
 	reverse_rotate_b(stack_b);
 }
 

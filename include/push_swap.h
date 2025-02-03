@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/28 15:56:35 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:11:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data
 	int		size;
 	int		nmoves;
 	bool	which;
+	bool	first_time;
 }	t_data;
 
 int		ft_parsing(t_list **list, int argc, char **argv);
@@ -41,7 +42,7 @@ int		find_min(t_list **stack);
 int		get_distance(t_list **stack, int index);
 void	simple_sort(t_list **stack_a, t_list **stack_b);
 void	index_init(t_list **stack);
-int		ft_largest_index(t_list *stack, int size);
+int		ft_smallest_index(t_list *stack, int size);
 void	main_sort(t_list **stack_a, t_list **stack_b);
 void	tiny_sort(t_list **stack_a, t_list **stack_b, int size);
 void	partition(t_list **stack_a, t_list **stack_b, t_data *data, int size);

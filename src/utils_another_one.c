@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   utils_another_one.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:55:49 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/24 15:53:51 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:37:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_largest_index(t_list *stack, int size)
+int	ft_smallest_index(t_list *stack, int size)
 {
 	int		i;
-	int		index;
 	t_list	*tmp;
+	t_list	*compare;
 
 	i = 0;
-	index = -1;
 	tmp = stack;
-	while (tmp && i < size)
+	compare = stack->next;
+	while (tmp && i < size - 1)
 	{
-		if (index < tmp->index)
-			index = tmp->index;
+		if (tmp->content > compare->content)
+			tmp = compare;
 		i++;
-		tmp = tmp->next;
+		compare = compare->next;
 	}
-	return (index);
+	return (tmp->current_pos);
 }
 
 static void	sort_two(t_list **stack_a, t_list **stack_b)
@@ -82,12 +82,48 @@ static void	sort_three(t_list **stack_a, t_list **stack_b)
 	}
 }
 
+static void	sort_four(t_list **stack_a, t_list **stack_b)
+{
+	int	i;
+	int	loop;
+
+	i = 0;
+	loop = ft_smallest_index(*stack_a, 4);
+	while (i++ < loop)
+		rotate_a(stack_a);
+	push_b(stack_a, stack_b);
+	i = 0;
+	while (i++ < loop)
+		reverse_rotate_a(stack_a);
+	sort_three(stack_a, stack_b);
+}
+
+static void	sort_five(t_list **stack_a, t_list **stack_b)
+{
+	int	i;
+	int	loop;
+
+	i = 0;
+	loop = ft_smallest_index(*stack_a, 5);
+	while (i++ < loop)
+		rotate_a(stack_a);
+	push_b(stack_a, stack_b);
+	i = 0;
+	while (i++ < loop)
+		reverse_rotate_a(stack_a);
+	sort_four(stack_a, stack_b);
+}
+
 void	tiny_sort(t_list **stack_a, t_list **stack_b, int size)
 {
 	if (size == 1)
 		push_b(stack_a, stack_b);
-	if (size == 2)
+	else if (size == 2)
 		sort_two(stack_a, stack_b);
 	else if (size == 3)
 		sort_three(stack_a, stack_b);
+	else if (size == 4)
+		sort_four(stack_a, stack_b);
+	else if (size == 5)
+		sort_five(stack_a, stack_b);
 }
